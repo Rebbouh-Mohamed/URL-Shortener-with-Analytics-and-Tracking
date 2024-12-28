@@ -1,0 +1,16 @@
+{% extends "users/base.html" %} {% block content %}
+<h2>Click Details for {{ tracked_link.url }}</h2>
+<p>Created on: {{ tracked_link.created_at }}</p>
+<p>Created on: {{domain}}/traking/r/{{ tracked_link.slug }}</p>
+<a href={{domain}}/traking/r/{{ tracked_link.slug }}>{{domain}}/traking/r/{{ tracked_link.slug }} </a>
+<h3>Click Data</h3>
+<ul>
+    {% for click in clicks %}
+    <li>
+        {{ click.timestamp }} - IP: {{ click.ip_address }} - Referrer: {{click.referrer }} -USER_AGENT:{{click.user_agent}}
+    </li>
+    {% empty %}
+    <p>No clicks recorded yet.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

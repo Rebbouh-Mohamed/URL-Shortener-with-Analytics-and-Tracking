@@ -1,0 +1,11 @@
+{%extends 'users/base.html'%} {% block content %}
+<h2>Create Tracked Link</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label for="url">URL to Track:</label>
+    <input type="url" name="url" required />
+    <label for="url">URL to name:</label>
+    <input type="text" name="name" required />
+    <button type="submit">Create Link</button>
+</form>
+{% endblock %}

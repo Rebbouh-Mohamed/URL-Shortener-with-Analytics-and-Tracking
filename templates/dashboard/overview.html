@@ -1,0 +1,14 @@
+<h1>Dashboard Overview</h1>
+<p>Total Clicks: {{ total_clicks }}</p>
+<p>Clicks in the Last 7 Days: {{ recent_clicks }}</p>
+
+<h2>Your Tracked Links</h2>
+<ul>
+    {% for link in tracked_links %}
+    <li>
+        <a href="{% url 'link_detail' link.id %}"
+            >{{ link.url_name }} -Clicks:{{link.click_count }}</a
+        >
+    </li>
+    {% endfor %}
+</ul>

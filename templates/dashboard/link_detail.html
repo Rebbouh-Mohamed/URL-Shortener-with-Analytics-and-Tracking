@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Link Details for {{ tracked_link.url }}</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <h1>Link Details for {{ tracked_link.url }}</h1>
+
+        <!-- Canvas for the chart -->
+        <canvas id="dailyClicksChart"></canvas>
+
+        <script>
+            // Data for the chart
+            const days = {{ days|safe }};
+            const counts = {{ counts|safe }};
+
+            // Get the context of the canvas element we want to select
+            const ctx = document.getElementById('dailyClicksChart').getContext('2d');
+
+            // Create the chart
+            new Chart(ctx, {
+                type: 'line', // You can change to 'bar', 'pie', etc.
+                data: {
+                    labels: days, // x-axis labels
+                    datasets: [{
+                        label: 'Clicks per Day',
+                        data: counts, // y-axis data
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Clicks'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

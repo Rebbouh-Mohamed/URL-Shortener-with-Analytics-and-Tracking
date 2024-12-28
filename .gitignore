@@ -1,0 +1,7 @@
+*.pyc
+__pycache__/*.pyc
+__pycache__/
+.env
+.repoproject
+*.sqlite3
+.vscode/
